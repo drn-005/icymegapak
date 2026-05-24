@@ -3,10 +3,8 @@ setlocal enabledelayedexpansion
 title IcyHaxxPak TUI - v1.0.0
 color B0
 
-:: Dynamic user profile targeting for portable distribution
 set "PAK_DIR=%USERPROFILE%\Desktop\IcyCoolPak"
 
-:: App Paths
 set "RETROARCH=C:\RetroArch-Win64\retroarch.exe"
 set "VLC=%PAK_DIR%\Media\vlc-3.0.23-win32\vlc-3.0.23\vlc.exe"
 set "SUMATRA=%PAK_DIR%\Literature\SumatraPDF-3.6.1-64.exe"
@@ -14,7 +12,6 @@ set "SUMATRA=%PAK_DIR%\Literature\SumatraPDF-3.6.1-64.exe"
 :MAIN_MENU
 cls
 echo.
-:: Bulletproof rendering: Safely grabs the raw text from the bottom of this file
 powershell -NoProfile -Command "Get-Content '%~f0' | Where-Object { $_ -like '#LOGO:*' } | ForEach-Object { $_.Substring(6) }"
 echo.
 echo =====================================================================
@@ -81,7 +78,7 @@ echo.
 choice /c 1234567 /n /m "Select media (1-7): "
 
 if errorlevel 7 goto :MAIN_MENU
-if errorlevel 6 start "" "%VLC%" "%PAK_DIR%\Media\Music\Bad Apple!!.mp3" & goto :MEDIA_MENU
+if errorlevel 6 start "" "%VLC%" "%PAK_DIR%\Media\Music\Bad Apple^!^!.mp3" & goto :MEDIA_MENU
 if errorlevel 5 start "" "%VLC%" "%PAK_DIR%\Media\Music\MEGALOVANIA.mp3" & goto :MEDIA_MENU
 if errorlevel 4 start "" "%VLC%" "%PAK_DIR%\Media\Music\Sburban Jungle.mp3" & goto :MEDIA_MENU
 if errorlevel 3 start "" "%VLC%" "%PAK_DIR%\Media\Music\Machine Love.mp3" & goto :MEDIA_MENU
@@ -93,7 +90,6 @@ if errorlevel 1 start "" "%VLC%" "%PAK_DIR%\Media\Pixels (Full movie in English)
 start "" "%SUMATRA%" "%PAK_DIR%\Literature\The.Homestuck.Epilogues.-.Andrew.Hussepilogues.epub"
 goto :MAIN_MENU
 
-:: Code processing stops here. The lines below are isolated as raw text data assets.
 exit /b
 
 #LOGO:  _____            _    _                    _____          _    
